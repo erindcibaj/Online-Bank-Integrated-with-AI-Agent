@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="nav-admin :: layout(~{::body})">
+<head>
+    <title>Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+        <h1>Statistics of Account Types</h1>
+        
+        <label class="label">Number of Personal and Business Accounts</label>
+        <label class="label" style="margin-left: 450px">Total Transaction Sum of Personal and Business Accounts</label>
+
+        <div style="display: flex; justify-content: center;">
+        <div class="box_bar_chart">
+        <!-- Bar Chart Container -->
+        <div style="width: 80%; max-width: 600px; margin: auto; margin-top: 30px;">
+            <canvas id="accountChart"></canvas>
+        </div>
+        </div>
+        
+
+         <div class="box_bar_chart">
+        <!-- Bar Chart Container -->
+        <div style="width: 80%; max-width: 600px; margin: auto; margin-top: 30px;">
+            <canvas id="transactionChart"></canvas>
+        </div>
+        </div>
+        </div>
+        
+        
+        <h1 style="margin-top: 40px;">Loan Type Distribution</h1>
+        
+        <label class="label" style="margin-left: 250px">Number of Loans for Personal Account</label>
+        <label style="margin-left: 475px;">Number of Loans for Business Account</label>
+
+        <div style="display: flex; justify-content: center; margin-bottom: 30px;">
+        <!-- Pie Chart for Personal Account Loans -->
+        <div class="box_pie_chart">
+            <canvas id="loanChartPersonal"></canvas>
+        </div>
+
+        <!-- Pie Chart for Business Account Loans -->
+        <div class="box_pie_chart">
+            <canvas id="loanChartBusiness"></canvas>
+        </div>
+        </div>
+        
+        <h1 style="margin-top: 70px;">Card Type Distribution</h1>
+        
+        <label class="label" style="margin-left: 250px">Number of Cards for Personal Account</label>
+        <label style="margin-left: 475px;">Number of Cards for Business Account</label>
+        
+        <div style="display: flex; justify-content: center; margin-bottom: 30px;">
+        <!-- Pie Chart for Personal Account Loans -->
+        <div class="box_pie_chart">
+            <canvas id="cardChartPersonal"></canvas>
+        </div>
+
+        <!-- Pie Chart for Business Account Loans -->
+        <div class="box_pie_chart">
+            <canvas id="cardChartBusiness"></canvas>
+        </div>
+        </div>
+        
+        <script th:inline="javascript">
+            /* Get data from Thymeleaf */
+            let personalAccounts = /*[[${personalAccounts}]]*/ {};
+            let businessAccounts = /*[[${businessAccounts}]]*/ {};
+            let transactionpersonalAccounts = /*[[${transactionpersonalAccounts}]]*/ {};
+            let transactionbusinessAccounts = /*[[${transactionbusinessAccounts}]]*/ {};
+            let loanTypesPersonal = /*[[${loanTypesPersonal}]]*/ {}; // Loan type data for personal accounts
+            let loanTypesBusiness = /*[[${loanTypesBusiness}]]*/ {}; // Loan type data for business accounts
+            let cardTypesPersonal = /*[[${cardTypesPersonal}]]*/ {};
+            let cardTypesBusiness = /*[[${cardTypesBusiness}]]*/ {};
+
+            /* Prepare data for bar chart */
+            let labels = [''];
+            let personalValues = Object.values(personalAccounts);
+            let businessValues = Object.values(businessAccounts);
+
+            /* Initialize Bar Chart */
+            const ctx1 = document.getElementById('accountChart').getContext('2d');
+            new Chart(ctx1, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Personal Accounts',
+                            data: personalValues,
+                            backgroundColor: 'blue',
+                            borderColor: 'black',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Business Accounts',
+                            data: businessValues,
+                            backgroundColor: 'red',
+                            borderColor: 'black',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            
+            let transactionpersonalValues = Object.values(transactionpersonalAccounts);
+            let transactionbusinessValues = Object.values(transactionbusinessAccounts);
+            
+            const ctx2 = document.getElementById('transactionChart').getContext('2d');
+            new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Personal Accounts',
+                            data: transactionpersonalValues,
+                            backgroundColor: 'blue',
+                            borderColor: 'black',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Business Accounts',
+                            data: transactionbusinessValues,
+                            backgroundColor: 'red',
+                            borderColor: 'black',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            /* Prepare data for Personal Account Pie Chart */
+            let loanLabelsPersonal = Object.keys(loanTypesPersonal);
+            let loanValuesPersonal = Object.values(loanTypesPersonal);
+
+            /* Initialize Personal Loan Pie Chart */
+            const ctx3 = document.getElementById('loanChartPersonal').getContext('2d');
+            new Chart(ctx3, {
+                type: 'pie',
+                data: {
+                    labels: loanLabelsPersonal,
+                    datasets: [{
+                        data: loanValuesPersonal,
+                        backgroundColor: ['blue', 'red', 'green', 'yellow', 'purple', 'orange'],
+                        borderColor: 'black',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true
+                }
+            });
+
+            /* Prepare data for Business Account Pie Chart */
+            let loanLabelsBusiness = Object.keys(loanTypesBusiness);
+            let loanValuesBusiness = Object.values(loanTypesBusiness);
+
+            /* Initialize Business Loan Pie Chart */
+            const ctx4 = document.getElementById('loanChartBusiness').getContext('2d');
+            new Chart(ctx4, {
+                type: 'pie',
+                data: {
+                    labels: loanLabelsBusiness,
+                    datasets: [{
+                        data: loanValuesBusiness,
+                        backgroundColor: ['blue', 'red', 'green', 'yellow'],
+                        borderColor: 'black',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true
+                }
+            });
+            
+            let cardLabelsPersonal = Object.keys(cardTypesPersonal);
+            let cardValuesPersonal = Object.values(cardTypesPersonal);
+
+            /* Initialize Business Loan Pie Chart */
+            const ctx5 = document.getElementById('cardChartPersonal').getContext('2d');
+            new Chart(ctx5, {
+                type: 'pie',
+                data: {
+                    labels: cardLabelsPersonal,
+                    datasets: [{
+                        data: cardValuesPersonal,
+                        backgroundColor: ['blue', 'red', 'green', 'yellow'],
+                        borderColor: 'black',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true
+                }
+            });
+
+            let cardLabelsBusiness = Object.keys(cardTypesBusiness);
+            let cardValuesBusiness = Object.values(cardTypesBusiness);
+
+            /* Initialize Business Loan Pie Chart */
+            const ctx6 = document.getElementById('cardChartBusiness').getContext('2d');
+            new Chart(ctx6, {
+                type: 'pie',
+                data: {
+                    labels: cardLabelsBusiness,
+                    datasets: [{
+                        data: cardValuesBusiness,
+                        backgroundColor: ['blue', 'red', 'green', 'yellow'],
+                        borderColor: 'black',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true
+                }
+            });
+
+        </script>
+</body>
+</html>

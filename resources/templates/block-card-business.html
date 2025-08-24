@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="nav-business :: layout(~{::body})">
+    <head>
+        <title>Block Card Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+            <form method="post" th:action="@{/block-card-business}" th:object="${blockCardBusiness}">
+           <h1>Block Card</h1>  
+            
+            <label class='label'>From Account</label>
+            
+            <div class="field">
+               <select th:field="*{cardNumber}" id="cardNumber" required>
+                   <option value="">Please Select</option>
+                   <option th:each="card :${card}" th:value="${card}" th:text="${card}"></option>
+                   <!-- Add more options as needed -->
+               </select>
+           </div>
+            
+            <h2 class="h2" style="margin-top: 22px">Card Details</h2>
+            
+            <label class="label">Specify block reason:</label>
+            
+          
+            <div class="field">
+               <select th:field="*{reason}" id="reason" required>
+                   <option value="" >Please Select</option>
+                   <option value="Damaged">Damaged</option>
+                   <option value="Lost">Lost</option>
+                   <option value="Stolen">Stolen</option>
+               </select>
+            </div>
+            
+            <label class="label">Phone Number</label>
+            
+            <div class="field">
+                <input type="text" th:field="*{phoneNumber}" id="phoneNumber" placeholder="Phone Number" required 
+                    pattern="[0-9]{10,15}" title="Phone number isn't valid" 
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+            </div>
+            
+            <label class="label">Description</label>
+            
+            <div class="field">
+                <input type="text" th:field="*{description}" placeholder="Please Enter" required pattern="[A-Za-z0-9.\s]+" title="Description isn't valid">
+            </div>
+            
+            
+            <label class="label">Please read and accept the Terms and Conditions</label>
+            
+            <br>
+            
+            <label class="label"><strong>Read Terms and Conditions</strong></label>
+            
+            <br>
+            
+                <label class="label">
+                  <input type="checkbox" name="checkbox" required>
+                  I have read and agreed on the terms and conditions
+                </label> 
+            
+            <br>
+            
+            <div class="button-container" style="bottom: 0">
+                <button type="button" class="button" onclick="window.location.href='/business-dashboard'">Cancel</button>
+                <button class="button" type="submit">Submit</button>
+            </div>
+            
+            </form>                          
+    </body>
+</html>
+</html>

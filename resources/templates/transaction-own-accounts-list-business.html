@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="nav-business :: layout(~{::body})">
+    <head>
+        <title>Transaction Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    </head>
+    <body>
+            <h1>Transaction List</h1>  
+            
+            <button class="add" onclick="window.location.href='/transaction-own-accounts-business';">
+                <i></i> New Transaction
+            </button>
+
+            <!-- Single Box Container for All Cards -->
+                <div>
+                    <table class="table" style="width: 90%; margin-left: 50px; margin-top: 80px;">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">From Account Number</th>
+                    <th scope="col">To Account Number</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                  <tr th:each="transaction, iterStat : ${transaction}">
+                     <td th:text="${iterStat.index + 1}"></td>
+                    <td th:text="${transaction.fromAccountNumber}"></td>
+                    <td th:text="${transaction.toAccountNumber}"></td>
+                    <td th:text="${transaction.amount} + ' ' + ${transaction.currency}"></td>
+                    <td th:text="${transaction.transactionDate}"></td>
+                    <td th:text="${transaction.description}"></td>
+                  </tr>
+              </table>    
+            </div>
+    </body>
+</html>

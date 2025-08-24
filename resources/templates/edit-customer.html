@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="nav-admin :: layout(~{::body})">
+    <head>
+        <title>Edit Account Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+            <form method="post" th:action="@{/update-customer}" th:object="${customer}">
+           <h1>Edit Customer</h1>  
+           
+            <input type="hidden" th:field="*{id}">
+            
+             <label class='label'>Customer Number</label>
+            
+            <div class="field">
+                <input type="text" th:field="*{customerNumber}" readonly>
+            </div>
+            
+             <h2 class="h2" style="margin-top: 20px;">Customer Details</h2>
+             
+            <label class="label">First Name</label>
+            
+          
+            <div class="field">
+                <input type="text" th:field="*{name}" placeholder="Please Enter" pattern="[A-Za-z\s]+" title="Must have only letters" required>
+            </div>
+            
+            <label class="label">Last Name</label>
+            
+            <div class="field">
+                <input type="text" th:field="*{lastname}" placeholder="Please Enter" pattern="[A-Za-z\s]+" title="Must have only letters" required>
+            </div>
+            
+            <label class="label">Phone Number</label>
+            
+            <div class="field">
+          <input type="text" th:field="*{phone}" placeholder="Phone Number" required 
+          pattern="[0-9]{10,15}" 
+          title="Phone number isn't valid">
+           </div>
+               
+            <label class="label">Email</label>
+            
+            <div class="field">
+                <input type="email" th:field="*{email}" required>
+            </div>
+
+            
+            <div class="button-container" style="margin-top: 11px;">
+                <button type="button" class="button" onclick="window.location.href='/customer-list'">Cancel</button>
+                <button class="button" type="submit">Submit</button>
+            </div>
+            
+            </form>                          
+    </body>
+</html>

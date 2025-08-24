@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="nav-business :: layout(~{::body})">
+    <head>
+        <title>Dashboard Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+            
+            <div class="dashboard">
+               <div class="left-box">
+                   <div class="account-info">
+                       <h3>Other Accounts Transaction</h3>
+                        <div>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Account Number</th>
+                                            <th scope="col">Beneficiary</th>
+                                            <th scope="col">Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-group-divider">
+                                        <tr th:each="transaction : ${transaction}">
+                                            <td th:text="${transaction.accountNumber}"></td>
+                                            <td th:text="${transaction.accountNumberBeneficiary}"></td>
+                                            <td th:text="${transaction.amount} + ' ' + ${transaction.currency}"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </div>	
+        </div>
+    </div>
+
+            <div class="right-box">
+                <div class="option"><a href="/new-deposit-business"><span>➕</span> New Deposit</a></div>
+                <div class="option"><a href="/new-card-business"><span>➕</span> Add Card</a></div>
+                <div class="option"><a href="/transaction-own-accounts-business"><span>🔁</span> Transfer Between Own Accounts</a></div>
+                <div class="option"><a href="/transaction-business"><span>🔁</span> Transfer To Other Accounts</a></div>
+            </div>
+           </div>
+            
+    <div class="box_dashboard" th:if="${(accounts != null and not #lists.isEmpty(accounts)) 
+         or (cards != null and not #lists.isEmpty(cards)) 
+         or (deposit != null and not #lists.isEmpty(deposit))
+         or (loans != null and not #lists.isEmpty(loans))}">
+
+    <div style="width: 100%; margin-bottom: 20px" th:if="${accounts != null and not #lists.isEmpty(accounts)}">
+        <h3 style="color: rgb(13, 110, 253);"><strong>Accounts</strong></h3>
+    </div>
+
+                <div th:each="account, iterStat : ${accounts}" style="width: 100%; padding: 10px 0;">
+                    <h4 th:text="${iterStat.index == 0 ? 'Main Account' : iterStat.index == 1 ? 'Second Account' : iterStat.index + 1 + 'th Account'}"></h4>
+
+                    <div style="margin-top: 10px;" class="d-flex justify-content-between w-100">
+                        <div>
+                            <p><strong>Account Number:</strong></p>
+                            <p th:text="${account.accountNumber}"></p>
+                        </div>
+                        <div>
+                            <p><strong>Name:</strong></p>
+                            <p th:text="${account.name}"></p>
+                        </div>
+                        <div>
+                            <p><strong>Last Name:</strong></p>
+                            <p th:text="${account.lastName}"></p>
+                        </div>
+                        <div>
+                            <p><strong>Balance:</strong></p>
+                            <p th:text="${account.balance} + ' ' + ${account.currency}"></p>
+                        </div>
+                    </div>
+
+                    <hr th:if="${!iterStat.last}" style="border: 1px solid #000; margin: 15px 0; width: 100%;">
+                </div>
+                
+                <hr th:if="${not #lists.isEmpty(cards)}" style="border: 2px solid #000; margin: 20px 0; width: 100%;">
+                
+    <div style="width: 100%; margin-bottom: 20px" th:if="${cards != null and not #lists.isEmpty(cards)}">
+        <h3 style="color: rgb(13, 110, 253);"><strong>Cards</strong></h3>
+    </div>
+                
+                <div th:each="card, iterStat : ${cards}" style="width: 100%; padding: 10px 0;">
+                    <h3 th:text="${card.cardType}"></h3>
+                    <div style="margin-top: 10px;" class="d-flex justify-content-between w-100">
+                        <div>
+                            <p><strong>Account Number:</strong></p>
+                            <p th:text="${card.accountNumber}"></p>
+                        </div>
+                        <div>
+                            <p><strong>Card Number:</strong></p>
+                            <p th:text="${card.cardNumber}"></p>
+                        </div>
+                        <div>
+                            <p><strong>Expiry Date:</strong></p>
+                            <p th:text="${card.expiryDate}"></p>
+                        </div>
+                        <div>
+                            <p><strong>Balance:</strong></p>
+                            <p th:text="${card.balance} + ' ' + ${card.currency}"></p>
+                        </div>
+                    </div>
+                    <hr th:if="${!iterStat.last}" style="border: 1px solid #000; margin: 15px 0; width: 100%;">
+                </div>
+                
+                <hr th:if="${not #lists.isEmpty(deposit)}" style="border: 2px solid #000; margin: 20px 0; width: 100%;">
+
+    <div style="width: 100%; margin-bottom: 20px" th:if="${deposit != null and not #lists.isEmpty(deposit)}">
+        <h3 style="color: rgb(13, 110, 253);"><strong>Deposits</strong></h3>
+    </div>
+                
+                <div th:each="deposit, iterStat : ${deposit}" style="width: 100%; padding: 10px 0;">
+                    <div style="margin-top: 10px;" class="d-flex justify-content-between w-100">
+                        <div>
+                            <p><strong>Account Number:</strong></p>
+                            <p th:text="${deposit.accountNumber}"></p>
+                        </div>
+                        <div>
+                            <p><strong>Deposit Term:</strong></p>
+                            <p th:text="${deposit.depositTerm}"></p>
+                        </div>
+                        <div>
+                            <p><strong>Maturity Date:</strong></p>
+                            <p th:text="${deposit.maturityDate}"></p>
+                        </div>
+                        <div>
+                            <p><strong>Amount:</strong></p>
+                            <p th:text="${deposit.amount} + ' ' + ${deposit.currency}"></p>
+                        </div>
+                        <div>
+                            <p><strong>Description:</strong></p>
+                            <p th:text="${deposit.description}"></p>
+                        </div>
+                    </div>
+                    <hr th:if="${!iterStat.last}" style="border: 1px solid #000; margin: 15px 0; width: 100%;">
+                </div>
+                
+                <hr th:if="${not #lists.isEmpty(loans)}" style="border: 2px solid #000; margin: 20px 0; width: 100%;">
+
+    <div style="width: 100%; margin-bottom: 20px" th:if="${loans != null and not #lists.isEmpty(loans)}">
+        <h3 style="color: rgb(13, 110, 253);"><strong>Loans</strong></h3>
+    </div>
+                
+                <div th:each="loan, iterStat : ${loans}" style="width: 100%; padding: 10px 0;">
+                    <h3 th:text="${loan.loanType}"></h3>
+                    <div style="margin-top: 10px;" class="d-flex justify-content-between w-100">
+                        <div>
+                            <p><strong>Account Number:</strong></p>
+                            <p th:text="${loan.accountNumber}"></p>
+                        </div>
+                        <div>
+                            <p><strong>Amount:</strong></p>
+                            <p th:text="${loan.amount} + ' ' + ${loan.currency}"></p>
+                        </div>
+                        <div>
+                            <p><strong>Status:</strong></p>
+                            <p style="padding: 10px; font-size: 13px" th:text="${loan.status}" 
+                               th:classappend="${loan.status == 'Pending' ? 'badge bg-warning' : 
+                                                (loan.status == 'Accepted' ? 'badge bg-success' : 
+                                                'badge bg-danger')}">
+                            </p>
+                        </div>
+                    </div>
+                    <hr th:if="${!iterStat.last}" style="border: 1px solid #000; margin: 15px 0; width: 100%;">
+                </div>
+            </div>
+    </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="nav-business :: layout(~{::body})">
+    <head>
+        <title>Unblock Card Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+            <form method="post" th:action="@{/unblock-card-business}" th:object="${unblockCardBusiness}">
+           <h1>Reactivation Card (Unblock)</h1>  
+            
+            <label class='label'>From Account</label>
+            
+            <div class="field">
+               <select th:field="*{cardNumber}" id="cardNumber" required>
+                   <option value="">Please Select</option>
+                   <option th:each="card :${card}" th:value="${card}" th:text="${card}"></option>
+                   <!-- Add more options as needed -->
+               </select>
+           </div>
+            
+            <h2 class="h2">Card Details</h2>
+            
+            <label class="label">Reason for reactivating the card</label>
+            
+          
+            <div class="field">
+                <input type="text" th:field="*{reason}" placeholder="Please Enter" pattern="^[A-Za-z\s]+$" title="Only letters are allowed" required>
+            </div>
+                        
+            
+            <label class="label">Phone Number</label>
+            
+            <div class="field">
+                <input type="text" th:field="*{phoneNumber}" id="phoneNumber" placeholder="Phone Number" required 
+                    pattern="[0-9]{10,15}" title="Phone number isn't valid" 
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+            </div>
+            
+            <label class="label">Please read and accept the Terms and Conditions</label>
+            
+            <br>
+            
+            <label class="label"><strong>Read Terms and Conditions</strong></label>
+            
+            <br>
+            
+                <label class="label">
+                  <input type="checkbox" name="checkbox" required>
+                  I have read and agreed on the terms and conditions
+                </label> 
+            
+            <br>
+            
+            <div class="button-container" style="margin-top: 75px;">
+                <button type="button" class="button" onclick="window.location.href='/business-dashboard'">Cancel</button>
+                <button class="button" type="submit">Submit</button>
+            </div>
+            
+            </form>                          
+    </body>

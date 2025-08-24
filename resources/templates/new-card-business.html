@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="nav-business :: layout(~{::body})">
+    <head>
+        <title>New Card Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+            <form method="post" th:action="@{/new-card-business}" th:object="${newCardBusiness}">
+           <h1>New Card</h1>  
+           
+           <input type="hidden" th:field="*{customerNumber}"> 
+           
+            <label class='label'>Account Number</label>
+            
+            <div class="field">
+               <select th:field="*{accountNumber}" id="accountNumber" required>
+                   <option value="">Please Select</option>
+                   <option th:each="account :${accounts}" th:value="${account}" th:text="${account}"></option>
+                   <!-- Add more options as needed -->
+               </select>
+           </div>
+            
+            <h2 class="h2">Card Details</h2>
+            
+            <label class="label">Card Type</label>
+            
+          
+            <div class="field">
+               <select th:field="*{cardType}" id="card" required>
+                   <option value="" >Please Select</option>
+                   <option value="MasterCard Gold">MasterCard Gold</option>
+                   <option value="MasterCard Business">MasterCard Business</option>
+                   <option value="MasterCard World">MasterCard World</option>
+                   <option value="Visa Classic">Visa Classic</option>
+               </select>
+            </div>
+            
+            <label class="label">Card Number</label>
+            
+            <div class="field">
+                <input type="text" th:field="*{cardNumber}" placeholder="Please Enter" 
+                       maxlength="19" required pattern="\d{4}\s\d{4}\s\d{4}\s\d{4}" 
+                       title="Card number must be in the format XXXX XXXX XXXX XXXX"
+                       oninput="formatCardNumber(this)">
+            </div>
+            
+            <div th:if="${cardError}" id="cardError" class="alert alert-danger" role="alert" style="font-size: 13px; margin-left: 170px; margin-top: 15px; width: 14%">
+                <span th:text="${cardError}"></span>
+            </div>
+            
+            <label class="label">Card Holder</label>
+            
+            <div class="field">
+                    <input type="text" th:field="*{cardHolder}" placeholder="Please Enter" required pattern="[A-Za-z\s]+" title="Only letters are allowed">
+            </div>
+            
+            
+            <label class="label">Expiry Date</label>
+            
+           <div class="field">
+                <input type="date" th:field="*{expiryDate}" placeholder="Please enter">
+            </div>
+            
+            <label class="label">Please read and accept the Terms and Conditions</label>
+            
+            <br>
+            
+            <label class="label"><strong>Read Terms and Conditions</strong></label>
+            
+            <br>
+            
+                <label class="label">
+                  <input type="checkbox" name="checkbox" required>
+                  I have read and agreed on the terms and conditions
+                </label> 
+            
+            <br>
+            
+            <div class="button-container">
+                <button type="button" class="button" onclick="window.location.href='/card-list-business'">Cancel</button>
+                <button class="button" type="submit">Submit</button>
+            </div>
+            
+            </form>                          
+    </body>
+</html>

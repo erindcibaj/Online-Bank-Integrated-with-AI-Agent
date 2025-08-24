@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="nav-business :: layout(~{::body})">
+<head>
+    <title>Received Transactions</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+        <h1>Received Transactions</h1>  
+
+        <div>
+            <table class="table" style="width: 90%; margin-left: 50px; margin-top: 40px;">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Sender Account Number</th>
+                    <th scope="col">Sender Name</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                  <tr th:each="transaction, iterStat : ${receivedTransactions}">
+                    <td th:text="${iterStat.index + 1}"></td>
+                    <td th:text="${transaction.accountNumber}"></td> <!-- sender account -->
+                    <td th:text="${transaction.name}"></td> <!-- sender name -->
+                    <td th:text="${transaction.amount} + ' ' + ${transaction.currency}"></td>
+                    <td th:text="${transaction.transactionDate}"></td>
+                    <td th:text="${transaction.description}"></td>
+                  </tr>
+                </tbody>
+            </table>    
+        </div>
+</body>
+</html>

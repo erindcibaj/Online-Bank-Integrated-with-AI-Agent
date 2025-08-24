@@ -1,0 +1,207 @@
+1. Account Overview
+Users can view all their accounts, cards, loans, and deposits from the dashboard.
+
+Account:
+- Type: Personal, Business
+- Account Number
+- Account Holder Name and Last Name
+- Balance
+- Minimum balance requirements (e.g., 5,000 Lek for personal accounts)
+- Account opening eligibility (resident, age limit, documents needed)
+
+Card:
+- Type: MasterCard, Visa
+- Linked Account Number
+- Card Number
+- Expiry Date
+- Balance
+- Security features (chip, PIN, contactless)
+
+Deposit:
+- Linked Account Number
+- Deposit Term (e.g., 3 months, 6 months, 1 year)
+- Maturity Date
+- Amount
+- Description
+- Early withdrawal penalties (e.g., interest rate reduction or fees)
+- Interest Rates (subject to change):
+  - Lek (ALL)
+    - 3-month term: 1.5% per annum
+    - 6-month term: 2.1% per annum
+    - 12-month term: 2.8% per annum
+  - Euro (EUR)
+    - 3-month term: 0.3% per annum
+    - 6-month term: 0.5% per annum
+    - 12-month term: 0.75% per annum
+
+Loan:
+- Loan Type: Personal Loan, Home Loan, Business Loan, Agrobusiness Loan, Leasing Loan, Small Enterprise (SE) Loan, Micro Loan
+- Linked Account Number
+- Status: Pending, Accepted, Rejected
+- Interest Rates & Terms:
+  - Personal Loan: up to 5 years, 8.5% annual interest
+  - Home Loan: up to 20 years, 3.5%-5% annual interest depending on amount and duration
+  - Business Loan: custom terms starting from 6% annual interest
+  -Agrobusiness Loan:
+    Purpose: Financing agricultural production, equipment, or infrastructure
+    Terms: 1–10 years
+    Interest Rate: From 4.2% per annum (depending on amount and risk)
+    Grace period options available (up to 12 months)
+    Seasonal repayment schedules supported
+   -Leasing Loan:
+    Purpose: Financing vehicles, agricultural or industrial equipment
+    Terms: 1–7 years
+    Interest Rate: Starting from 5.5% per annum
+    Down payment typically required (10%–30%)
+    Collateral: Usually the leased item
+    VAT and insurance may be included in the monthly installment
+   -Small Enterprise (SE) Loan:
+    Target: Small and medium-sized enterprises
+    Terms: 1–8 years
+    Interest Rate: From 6% per annum
+    Purpose: Business expansion, equipment purchase, working capital
+    May require business registration, financial reports, and collateral
+   -Micro Loan
+    Purpose: Support for micro-entrepreneurs and individuals with small income
+    Loan Amount: From 30,000 Lek to 500,000 Lek
+    Terms: 6 months to 3 years
+    Interest Rate: Typically between 7.5% and 10.5% per annum
+    Minimal documentation required
+    Flexible approval criteria and short processing times
+
+Requires land ownership documents and agricultural activity proof
+- Loan application process and required documents (proof of income, ID, collateral if needed)
+- Loan approval timeframes (usually 5-10 business days)
+- Early repayment conditions and penalties
+
+2. Making a Bank Transfer
+To transfer funds between accounts:
+- Navigate to the 'Transfers' section.
+- Enter the source and destination account numbers.
+- Input the amount and description.
+
+Types of Transfers:
+- Internal (between own accounts)
+- External (to accounts in other banks)
+
+Fees and Limits:
+- Internal transfers: free
+- External transfers: 0.1% fee, minimum 100 Lek
+- Transfer limits per day: 5,000,000 Lek for personal accounts, 10,000,000 Lek for business accounts
+
+Processing Time:
+- Transfers are completed within 24 hours on business days
+
+3. Currency Conversion
+- Select source and target currencies
+- Enter the amount to convert
+
+Supported Currencies:
+- Lek (ALL), Euro (EUR), USD
+
+Exchange Rates:
+- Updated daily
+- Small margin included for bank’s cost
+
+Fees:
+- 0.3% currency conversion fee
+
+4. Application for Loan
+- Navigate to the 'Loan' section
+- Enter the amount and select loan type
+- Enter loan purpose (optional)
+
+Required Documents:
+- Valid ID or passport
+- Proof of income (salary slips, tax return)
+- Collateral documents (for secured loans)
+- Completed application form
+
+Loan Processing:
+- Approval typically takes 5-10 business days
+- Applicants will be notified via email or SMS
+
+5. Lost or Stolen Card
+- Immediately go to 'Block Card' section and fill the form
+- Card will be blocked instantly
+- Contact support for urgent assistance
+- Emergency card replacement available (fees may apply)
+
+6. Change Password
+If user remembers the password:
+- Go to 'Tools' > Change Password
+- Enter existing password
+- Enter new password
+- Confirm new password
+
+If user forgot the password:
+- Click ‘Forgot Password’ on login page
+- Enter registered email address
+- Password reset link will be sent via email (valid for 24 hours)
+
+7. Register User
+- Press ‘Register’ button on login page
+- Section 1: Fill personal information (name, date of birth, contact details)
+- Section 2: Create password and set security questions
+
+8. Register Card
+To register a card:
+- Navigate to 'Products' > Card
+- Enter account number, card number, cardholder name, expiry date
+- Choose card type:
+  - MasterCard Gold
+  - MasterCard Business
+  - MasterCard World
+  - Visa Classic
+
+Card Annual Fees:
+- MasterCard Gold: 2,000 Lek/year
+- MasterCard Business: 3,500 Lek/year
+- MasterCard World: 5,000 Lek/year
+- Visa Classic: 1,000 Lek/year
+
+CARD FEATURES
+
+MasterCard Gold
+- Accepted worldwide
+- Contactless payment
+- Monthly withdrawal limit: 1,000,000 Lek
+- Travel insurance included
+- Extended warranty on purchases
+- Priority customer support
+- Supports ALL and EUR currencies
+
+MasterCard Business
+- Designed for businesses
+- Spending limits per employee card
+- Expense tracking integration
+- Multi-user support
+- Access to business cashback deals
+- Priority lounge access
+- Monthly withdrawal limit: 2,000,000 Lek
+- Supports ALL, EUR, USD currencies
+
+MasterCard World
+- Premium travel & lifestyle card
+- Complimentary airport lounge access (LoungeKey)
+- High spending limits
+- Travel accident & medical insurance
+- 24/7 concierge service
+- Cashback or rewards on international purchases
+- Monthly withdrawal limit: 3,000,000 Lek
+- Supports ALL, EUR, USD, GBP currencies
+
+Visa Classic
+- For everyday domestic and international use
+- Chip & PIN security + contactless
+- SMS transaction alerts
+- Verified by Visa online protection
+- Monthly withdrawal limit: 800,000 Lek
+- Supports ALL and EUR currencies
+
+10. Digital Banking Features
+- Online banking and mobile app available 24/7
+- Features: balance check, transfer funds, view statements, block cards
+
+
+

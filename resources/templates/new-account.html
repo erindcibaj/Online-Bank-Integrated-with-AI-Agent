@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="nav-admin :: layout(~{::body})">
+    <head>
+        <title>New Account Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+            <form method="post" th:action="@{/new-account}" th:object="${account}">
+           <h1>New Account</h1>  
+                       
+            <label class='label' style="margin-top: 8px;">Account Number</label>
+            
+            <div class="field">
+               <input type="text" th:field="*{accountNumber}" readonly>
+           </div>
+            
+            <label class='label'>Customer Number</label>
+            
+            <div class="field">
+                <input type="text" th:field="*{customerNumber}" placeholder="Please Enter" pattern="[0-9]{9}" title="Invalid customer number" required>
+            </div>
+            
+             <h2 class="h2" style="margin-top: 20px;">Account Details</h2>
+             
+            <label class="label">Balance</label>
+            
+            <div class="field">
+                <input type="text" th:field="*{balance}" placeholder="00.00" pattern="[0-9.,]*" title="Amount isn't valid" required oninput="validateAmount(this)">
+                <select th:field="*{currency}" style="padding: 12px; width: 7%;">
+                    <option value="ALL">ALL</option>
+                    <option value="EUR">EUR</option>
+                    <option value="USD">USD</option>
+                    <option value="GPB">GPB</option>
+                    <option value="AUD">AUD</option>
+                    <option value="CAD">CAD</option>
+                    <option value="CHF">CHF</option>
+                </select>
+            </div>
+            
+            <label class="label">First Name</label>
+            
+          
+            <div class="field">
+                <input type="text" th:field="*{name}" placeholder="Please Enter" pattern="[A-Za-z\s]+" title="Must have only letters" required>
+            </div>
+            
+            <label class="label">Last Name</label>
+            
+            <div class="field">
+                <input type="text" th:field="*{lastName}" placeholder="Please Enter" pattern="[A-Za-z\s]+" title="Must have only letters" required>
+            </div>
+               
+
+            
+            <div class="button-container" style="margin-top: 11px;">
+                <button type="button" class="button" onclick="window.location.href='/personal'">Cancel</button>
+                <button class="button" type="submit">Submit</button>
+            </div>
+            
+            </form>                          
+    </body>
+</html>

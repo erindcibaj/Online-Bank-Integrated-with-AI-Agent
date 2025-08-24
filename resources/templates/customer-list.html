@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="nav-admin :: layout(~{::body})">
+    <head>
+        <title>Account List Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+             <h1>Personal Account Customer List</h1>  
+            
+            <!-- Single Box Container for All Cards -->
+            <table class="table table-striped table-bordered table_admin" style="margin-top: 40px">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Customer Number</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Actions</th> 
+                    </tr>
+                </thead>
+                
+                <tbody>
+                <tr th:each="customerList, iterStat : ${customer}">
+                    <td th:text="${iterStat.index + 1}"></td>
+                    <td th:text="${customerList.customerNumber}"></td>
+                    <td th:text="${customerList.name}"></td>
+                    <td th:text="${customerList.lastname}"></td>
+                    <td th:text="${customerList.phone}"></td>
+                    <td th:text="${customerList.email}"></td>
+                    <td>
+                        <a th:href="@{/edit-customer/{id}(id=${customerList.id})}" class="btn btn-primary">Edit</a>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>         
+    </body>
+</html>

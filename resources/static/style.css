@@ -1,0 +1,464 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: rgb(211, 217, 226);
+}
+
+.navbar{
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.form {
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  min-height: 400px;
+  background-color: #fff;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+.form h2 {
+  color: #777;
+  margin: 0 0 40px;
+  padding: 0;
+}
+
+.form .input-box {
+  position: relative;
+  margin: 20px 0;
+}
+
+.form .input-box1 {
+  position: relative;
+  margin: 20px 0;
+}
+
+.form .input-box input {
+  width: 92%;
+  font-size: 16px;
+  border: none;
+  border-bottom: 2px solid #777;
+  outline: none;
+  padding: 10px;
+  padding-left: 30px;
+  box-sizing: border-box;
+  font-weight: bold;
+  color: #777;
+}
+
+.form .input-box1 input {
+  width: 100%;
+  font-size: 16px;
+  border: none;
+  border-bottom: 2px solid #777;
+  outline: none;
+  padding: 10px;
+  padding-left: 30px;
+  box-sizing: border-box;
+  font-weight: bold;
+  color: #777;
+}
+
+.form .input-box input:focus {
+  border-bottom-color: #03a9f4;
+}
+
+.form .input-box .fa {
+  position: absolute;
+  top: 8px;
+  left: 5px;
+  font-size: 18px;
+  color: #777;
+}
+
+.form .input-box1 input[type="submit"] {
+  border: none;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  transition: 0.5s;
+  padding-left: 15px;
+  border-radius: 8px;
+}
+
+.form .input-box1 input[type="submit"]:hover {
+  background-color: #ff4987;
+}
+
+.form a {
+  text-decoration: none;
+  color: #777;
+  margin-left: 60px;
+  font-weight: bold;
+  display: inline-block;
+  transition: 0.5s;
+}
+
+.form a:hover {
+  color: #ff4987;
+}
+
+
+ button:hover {
+  background-color: #ff4987;
+}
+
+ .button{
+  width: 100%;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  padding: 10px;
+  box-sizing: border-box;
+  font-weight: bold;
+  padding-left: 15px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  transition: 0.5s;
+  background-color: #007bff;
+  border-radius: 8px;
+}
+
+.formregister{
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    min-height: 400px;
+    background-color: #fff;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+    padding: 35px;
+    box-sizing: border-box;
+}
+
+.formregister h2 {
+  color: #777;
+  padding: 0;
+}
+
+.formregister .input-box {
+  position: relative;
+  margin: 20px 0;
+}
+
+.formregister .input-box input {
+  width: 93%;
+  font-size: 16px;
+  border: none;
+  border-bottom: 2px solid #777;
+  outline: none;
+  padding: 8px;
+  padding-left: 30px;
+  box-sizing: border-box;
+  font-weight: bold;
+}
+
+.formregister .input-box input:focus {
+  border-bottom-color: #03a9f4;
+}
+
+.formregister .input-box .fa {
+  position: absolute;
+  top: 8px;
+  left: 5px;
+  font-size: 18px;
+  color: #777;
+}
+
+.formregister .input-box input[type="submit"] {
+  border: none;
+  cursor: pointer;
+  background-color: #03a9f4;
+  color: #fff;
+  font-weight: bold;
+  transition: 0.5s;
+  padding-left: 15px;
+}
+
+.formregister .input-box input[type="submit"]:hover {
+  background-color: #ff4987;
+}
+
+.formregister a {
+  text-decoration: none;
+  color: #777;
+  margin-top: 10px;
+  font-weight: bold;
+  display: inline-block;
+  transition: 0.5s;
+}
+
+.formregister a:hover {
+  color: #ff4987;
+}
+
+.formBusinessLogin {
+  position: absolute;
+  top: 54%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  min-height: 400px;
+  background-color: #fff;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+.formBusinessLogin h2 {
+  color: #777;
+  margin: 0 0 25px;
+  padding: 0;
+}
+
+.formBusinessLogin .input-box {
+  position: relative;
+  margin: 20px 0;
+}
+
+.formBusinessLogin .input-box1 {
+  position: relative;
+  margin: 20px 0;
+}
+
+.formBusinessLogin .input-box input {
+  width: 92%;
+  font-size: 16px;
+  border: none;
+  border-bottom: 2px solid #777;
+  outline: none;
+  padding: 10px;
+  padding-left: 30px;
+  box-sizing: border-box;
+  font-weight: bold;
+  color: #777;
+}
+
+.formBusinessLogin .input-box1 input {
+  width: 100%;
+  font-size: 16px;
+  border: none;
+  border-bottom: 2px solid #777;
+  outline: none;
+  padding: 10px;
+  padding-left: 30px;
+  box-sizing: border-box;
+  font-weight: bold;
+  color: #777;
+}
+
+.formBusinessLogin .input-box input:focus {
+  border-bottom-color: #03a9f4;
+}
+
+.formBusinessLogin .input-box .fa {
+  position: absolute;
+  top: 8px;
+  left: 5px;
+  font-size: 18px;
+  color: #777;
+}
+
+.formBusinessLogin .input-box1 input[type="submit"] {
+  border: none;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  transition: 0.5s;
+  padding-left: 15px;
+  border-radius: 8px;
+}
+
+.formBusinessLogin .input-box1 input[type="submit"]:hover {
+  background-color: #ff4987;
+}
+
+.formBusinessLogin a {
+  text-decoration: none;
+  color: #777;
+  margin-left: 60px;
+  font-weight: bold;
+  display: inline-block;
+  transition: 0.5s;
+}
+
+.formBusinessLogin a:hover {
+  color: #ff4987;
+}
+
+
+/* Ensure selected options have normal color */
+option {
+    color: black;
+}
+
+.formBusinessRegister{
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  min-height: 400px;
+  background-color: #fff;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+.formBusinessRegister h2 {
+  color: #777;
+  padding: 0;
+}
+
+.formBusinessRegister .input-box {
+  position: relative;
+  margin: 20px 0;
+}
+
+.formBusinessRegister .input-box input {
+  width: 93%;
+  font-size: 16px;
+  border: none;
+  border-bottom: 2px solid #777;
+  outline: none;
+  padding: 8px;
+  padding-left: 30px;
+  box-sizing: border-box;
+  font-weight: bold;
+}
+
+.formBusinessRegister .input-box input:focus {
+  border-bottom-color: #03a9f4;
+}
+
+.formBusinessRegister .input-box .fa {
+  position: absolute;
+  top: 8px;
+  left: 5px;
+  font-size: 18px;
+  color: #777;
+}
+
+.formBusinessRegister .input-box input[type="submit"] {
+  border: none;
+  cursor: pointer;
+  background-color: #03a9f4;
+  color: #fff;
+  font-weight: bold;
+  transition: 0.5s;
+  padding-left: 15px;
+}
+
+.formBusinessRegister .input-box input[type="submit"]:hover {
+  background-color: #ff4987;
+}
+
+.formBusinessRegister a {
+  text-decoration: none;
+  color: #777;
+  margin-top: 10px;
+  font-weight: bold;
+  display: inline-block;
+  transition: 0.5s;
+}
+
+.formBusinessRegister a:hover {
+  color: #ff4987;
+}
+
+.formPassword{
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  min-height: 400px;
+  background-color: #fff;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+  padding: 25px;
+  box-sizing: border-box;
+}
+
+.formPassword h2 {
+  color: #777;
+  padding: 0;
+}
+
+.formPassword .input-box {
+  position: relative;
+  margin: 20px 0;
+}
+
+.formPassword .input-box input {
+  width: 93%;
+  font-size: 16px;
+  border: none;
+  border-bottom: 2px solid #777;
+  outline: none;
+  padding: 8px;
+  padding-left: 30px;
+  box-sizing: border-box;
+  font-weight: bold;
+}
+
+.formPassword .input-box input:focus {
+  border-bottom-color: #03a9f4;
+}
+
+.formPassword .input-box .fa {
+  position: absolute;
+  top: 8px;
+  left: 5px;
+  font-size: 18px;
+  color: #777;
+}
+
+.formPassword .input-box input[type="submit"] {
+  border: none;
+  cursor: pointer;
+  background-color: #03a9f4;
+  color: #fff;
+  font-weight: bold;
+  transition: 0.5s;
+  padding-left: 15px;
+}
+
+.formPassword .input-box input[type="submit"]:hover {
+  background-color: #ff4987;
+}
+
+.formPassword a {
+  text-decoration: none;
+  color: #777;
+  margin-top: 10px;
+  font-weight: bold;
+  display: inline-block;
+  transition: 0.5s;
+}
+
+.formPassword a:hover {
+  color: #ff4987;
+}
+    
+.dropdown-item:hover {
+  background-color: rgb(13, 110, 253); 
+  color: white;
+}
+
+
+    
+
+
+

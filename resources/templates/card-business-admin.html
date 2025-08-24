@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="nav-admin :: layout(~{::body})">
+<head>
+    <title>Personal Card Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+        
+          <h1>Business Accounts - Card List</h1>  
+            
+          <table class="table table-striped table-bordered table_admin" style="margin-top: 40px;">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Account Number</th>
+                        <th>Card Holder</th>
+                        <th>Card Number</th>
+                        <th>Card Type</th>
+                        <th>Expiry Date</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr th:each="card, iterStat : ${cardsBusiness}">
+                        <td th:text="${iterStat.index + 1}"></td>
+                        <td th:text="${card.accountNumber}"></td>
+                        <td th:text="${card.cardHolder}"></td>
+                        <td th:text="${card.cardNumber}"></td>
+                        <td th:text="${card.cardType}"></td>
+                        <td th:text="${card.expiryDate}"></td>
+                        <td th:text="${card.balance}"></td>                      
+                    </tr>
+                </tbody>
+            </table>
+</body>
+</html>

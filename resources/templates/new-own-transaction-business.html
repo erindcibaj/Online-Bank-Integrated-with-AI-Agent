@@ -1,0 +1,96 @@
+    <!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org" th:replace="nav-admin :: layout(~{::body})">
+        <head>
+            <title>New Transaction Page</title>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </head>
+        <body>
+                <form method="post" th:action="@{/new-own-transaction-business}" th:object="${newOwnTransactionAdmin}">
+               <h1>New Transaction</h1>             
+               
+               <h2 class="h2">Transfer To Own Accounts</h2>
+
+                <label class='label'>From Account Number</label>
+
+                <div class="field">
+                    <input type="text" th:field="*{fromAccountNumber}" 
+                           placeholder="Please Enter" 
+                           required 
+                           pattern="^AL\d{13}$" 
+                           title="Account number should be in the format AL followed by 13 digits">
+               </div>
+                
+            <div th:if="${senderError}" id="senderError" class="alert alert-danger" role="alert" style="font-size: 13px; padding: 15px; margin-left: 170px; width: 14%; margin-top: 15px;">
+                <span th:text="${senderError}"></span>
+            </div>
+                
+                                
+                <label class='label'>To Account Number</label>
+
+                <div class="field">
+                    <input type="text" th:field="*{toAccountNumber}" 
+                           placeholder="Please Enter" 
+                           required 
+                           pattern="^AL\d{13}$" 
+                           title="Account number should be in the format AL followed by 13 digits">
+                </div>
+                
+            <div th:if="${beneficiaryError}" id="beneficiaryError" class="alert alert-danger" role="alert" style="font-size: 13px; padding: 15px; margin-left: 170px; width: 14%; margin-top: 15px;">
+                <span th:text="${beneficiaryError}"></span>
+            </div>
+                
+            <div th:if="${sameAccountError}" class="alert alert-danger" role="alert" style="font-size: 13px; padding: 15px; margin-left: 170px; width: 24%; margin-top: 15px;">
+                <span th:text="${sameAccountError}"></span>
+            </div>
+
+            <div th:if="${differentCustomerError}" class="alert alert-danger" role="alert" style="font-size: 13px; padding: 15px; margin-left: 170px; width: 23%; margin-top: 15px;">
+                <span th:text="${differentCustomerError}"></span>
+            </div>
+                
+            <div th:if="${error}" id="error" class="alert alert-danger" role="alert" style="font-size: 13px; padding: 15px; margin-left: 170px; width: 14%; margin-top: 15px;">
+                <span th:text="${error}"></span>
+            </div>
+
+                <h2 class="h2">Transfer Details</h2>
+
+                <label class="label">Amount</label>
+
+                <div class="field">
+                <input type="text" th:field="*{amount}" id="amount" placeholder="00.00"  pattern="[0-9.,]*" title="Amount isn't valid"  required oninput="validateAmount(this)">
+                    <select th:field="*{currency}" style="padding: 12px; width: 6%;">
+                        <option value="ALL">ALL</option>
+                        <option value="EUR">EUR</option>
+                        <option value="USD">USD</option>
+                        <option value="GPB">GPB</option>
+                        <option value="AUD">AUD</option>
+                        <option value="CAD">CAD</option>
+                        <option value="CHF">CHF</option>
+                    </select>
+                </div>
+                
+            <div th:if="${fundsError}" id="fundsError" class="alert alert-danger" role="alert" style="font-size: 13px; padding: 15px; margin-left: 170px; width: 10%; margin-top: 15px;">
+                <span th:text="${fundsError}"></span>
+            </div>
+
+                <label class="label">Name</label>
+
+                <div class="field">
+                    <input type="text" th:field="*{name}" placeholder="Please Enter" pattern="[A-Za-z\s]+" title="Must have only letters" required>
+                </div>
+                
+                <label class="label">Description</label>
+
+                <div class="field">
+                    <input type="text" th:field="*{description}" placeholder="Please Enter" required pattern="[A-Za-z0-9.\s]+" title="Description isn't valid">
+                </div>
+
+
+                <div class="button-container" style="margin-top: 30px;">
+                    <button type="button" class="button" onclick="window.location.href='/transaction-own-business-admin'">Cancel</button>
+                    <button class="button" type="submit">Submit</button>
+                </div>
+
+                </form>                          
+        </body>
+    </html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="layout :: layout(~{::body})">
+<head>
+    <title>Register Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <!-- Form action updated to /register-step1 for temporary data -->
+    <form class="formBusinessRegister" method="post"th:action="@{/register-business-step1}" th:object="${registerRequest}">
+        <h2>Register</h2>
+        
+            <div th:if="${accountError}" id="accountError" class="alert alert-danger" role="alert" style="font-size: 13px; padding: 4px">
+                <span th:text="${accountError}"></span>
+            </div>
+        
+        
+        <!-- Customer Number -->
+        <div style="width: 100%" class="input-box">
+            <i class="fa fa-id-card" aria-hidden="true"></i>
+            <input style="width: 100%" type="text" th:field="*{customerNumber}" placeholder="Customer Number"
+            pattern="[A-Za-z0-9]{9}" title="Must contain 9 numbers" required>
+        </div>
+        
+            <div th:if="${errorRegister}" id="errorRegister" class="alert alert-danger" role="alert" style="font-size: 13px; padding: 4px">
+                <span th:text="${errorRegister}"></span>
+            </div>
+        
+            <div th:if="${registerError}" id="registerError" class="alert alert-danger" role="alert" style="font-size: 13px; padding: 4px">
+                <span th:text="${registerError}"></span>
+            </div>
+
+        <!-- NIPT -->
+        <div style="width: 100%" class="input-box">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <input style="width: 100%" type="text" th:field="*{nipt}" placeholder="NIPT"
+            pattern="[A-Za-z0-9]{10}" title="Must contain 10 characters" required>
+        </div>
+        
+            <div th:if="${niptError}" id="niptError" class="alert alert-danger" role="alert" style="font-size: 13px; padding: 4px">
+                <span th:text="${niptError}"></span>
+            </div>
+        
+         <div class="input-box">
+          <i class="fa fa-phone" aria-hidden="true"></i>
+          <input style="width: 100%" type="text" th:field="*{phone}" placeholder="Phone Number" required 
+          pattern="[0-9]{10,15}" 
+          title="Phone number isn't valid">
+        </div>
+        
+            <div th:if="${phoneError}" id="phoneError" class="alert alert-danger" role="alert" style="font-size: 13px; padding: 4px">
+                <span th:text="${phoneError}"></span>
+            </div>
+        
+        <div class="input-box">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            <input style="width: 100%" type="email" th:field="*{email}" placeholder="Email" required>
+        </div>
+        
+        <div th:if="${emailError}" id="emailError" class="alert alert-danger" role="alert" style="font-size: 13px; padding: 4px">
+            <span th:text="${emailError}"></span>
+        </div>
+
+
+        <!-- Submit button to proceed to password page -->
+        <button type="submit" class="button">Next</button>
+
+       
+        <button type="button" class="input-box button" onclick="window.location.href='/loginBusiness'">Back to login</button>
+    </form>
+</body>
+</html>

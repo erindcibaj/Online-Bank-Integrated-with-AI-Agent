@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="nav :: layout(~{::body})">
+    <head>
+        <title>Deposit Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+            <form method="post" th:action="@{/new-deposit}" th:object="${newDeposit}">
+           <h1>Opening Saving Deposit Online</h1>  
+            
+            <label class='label'>Account Number</label>
+            
+            <div class="field">
+              <select th:field="*{accountNumber}" id="accountNumber" required>
+                   <option value="">Please Select</option>
+                   <option th:each="account :${accounts}" th:value="${account}" th:text="${account}"></option>
+                   <!-- Add more options as needed -->
+               </select>
+           </div>
+            
+            <h2 class="h2" style="margin-top: 16px">Deposit Details</h2>
+            
+            <label class="label">Amount</label>
+
+            <div class="field">
+                <input type="text" th:field="*{amount}" id="amount" placeholder="00.00"  pattern="[0-9.,]*" title="Amount isn't valid"  required oninput="validateAmount(this)">
+                <select th:field="*{currency}" style="padding: 12px; width: 7%;">
+                    <option value="ALL">ALL</option>
+                    <option value="EUR">EUR</option>
+                    <option value="USD">USD</option>
+                    <option value="GPB">GPB</option>
+                    <option value="AUD">AUD</option>
+                    <option value="CAD">CAD</option>
+                    <option value="CHF">CHF</option>
+                </select>
+            </div>
+            
+            <div th:if="${errorDeposit}" id="errorDeposit" class="alert alert-danger" role="alert" style="font-size: 13px; padding: 15px; margin-left: 170px; width: 16%; margin-top: 15px;">
+                <span th:text="${errorDeposit}"></span>
+            </div>
+            
+           <label class="label">Deposit Term (In months)</label>
+            
+            <div class="field">
+                <input type="text"
+                       th:field="*{depositTerm}"
+                       id="depositTerm"
+                       placeholder="Please Enter"
+                       required
+                       pattern=".*\d+.*"
+                       title="Deposit Term isn't valid">
+            </div>
+
+           
+            
+            <label class="label">Description</label>
+            
+            <div class="field">
+                <input type="text" th:field="*{description}" placeholder="Please Enter" required pattern="[A-Za-z0-9.\s]+" title="Description isn't valid">
+            </div>
+            
+            
+            <label class="label">Please read and accept the Terms and Conditions</label>
+            
+            <br>
+            
+            <label class="label"><strong>Read Terms and Conditions</strong></label>
+            
+            <br>
+            
+                <label class="label">
+                  <input type="checkbox" name="checkbox" required>
+                  I have read and agreed on the terms and conditions
+                </label> 
+            
+            <br>
+            
+            <div class="button-container" style="margin-top: 0">
+                <button type="button" class="button" onclick="window.location.href='/deposit-list'">Cancel</button>
+                <button class="button" type="submit">Submit</button>
+            </div>
+            
+            </form>                          
+    </body>
+</html>

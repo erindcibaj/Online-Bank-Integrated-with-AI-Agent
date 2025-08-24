@@ -1,0 +1,85 @@
+    <!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org" th:replace="nav :: layout(~{::body})">
+        <head>
+            <title>New Loan Page</title>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </head>
+        <body>
+                <form method="post" th:action="@{/new-loan}" th:object="${newLoan}">
+               <h1>New Loan</h1>  
+
+
+                <label class='label'>Account Number</label>
+
+                <div class="field">
+                   <select th:field="*{accountNumber}" id="accountNumber" required>
+                       <option value="">Please Select</option>
+                       <option th:each="account :${accounts}" th:value="${account}" th:text="${account}"></option>
+                   </select>
+               </div>
+
+                <h2 class="h2" style="margin-top: 22px">Loan Details</h2>
+
+                <label class="label">Loan Type</label>
+
+
+                <div class="field">
+                    <select th:field="*{loanType}" id="loan" required>
+                        <option value="" >Please Select</option>
+                        <option value="Agribusiness Loan">Agribusiness Loan</option>
+                        <option value="Housing Loan">Housing Loan</option>
+                        <option value="Personal Loan">Personal Loan</option>
+                        <option value="Leasing">Leasing</option>
+                        <option value="Micro Loan">Micro Loan</option>
+                        <option value="SE Loan">SE Loan</option>
+                    </select>
+                 </div>
+            
+
+                <label class="label">Amount</label>
+
+                <div class="field">
+                <input type="text" th:field="*{amount}" id="amount" placeholder="00.00"  pattern="[0-9.,]*" title="Amount isn't valid"  required oninput="validateAmount(this)">
+                    <select th:field="*{currency}" style="padding: 12px; width: 7%;">
+                        <option value="ALL">ALL</option>
+                        <option value="EUR">EUR</option>
+                        <option value="USD">USD</option>
+                        <option value="GPB">GPB</option>
+                        <option value="AUD">AUD</option>
+                        <option value="CAD">CAD</option>
+                        <option value="CHF">CHF</option>
+                    </select>
+                </div>
+
+
+            <label class="label">Loan Purpose (Optional)</label>
+            
+            <div class="field">
+                <input type="text" th:field="*{loanPurpose}" placeholder="Please Enter" pattern="[A-Za-z0-9.\s]+" title="Loan purpose isn't valid">
+            </div>
+
+
+                <label class="label">Please read and accept the Terms and Conditions</label>
+
+                <br>
+
+                <label class="label"><strong>Read Terms and Conditions</strong></label>
+
+                <br>
+
+                    <label class="label">
+                      <input type="checkbox" name="checkbox" required>
+                      I have read and agreed on the terms and conditions
+                    </label> 
+
+                <br>
+
+                <div class="button-container" style="bottom: 0">
+                    <button type="button" class="button" onclick="window.location.href='/loan-list'">Cancel</button>
+                    <button class="button" type="submit">Submit</button>
+                </div>
+
+                </form>                          
+        </body>
+    </html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="nav-business :: layout(~{::body})">
+    <head>
+        <title>Deposit Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    </head>
+    <body>
+            <h1>Deposit List</h1>  
+            
+            <button class="add" onclick="window.location.href='/new-deposit-business';">
+                <i></i> New Deposit
+            </button>
+
+            <!-- Single Box Container for All Cards -->
+            <div class="box">
+                <div th:each="deposit, iterStat : ${deposit}" style="width: 100%; padding: 10px 0;">
+
+                    <div style="margin-top: 10px;" class="d-flex justify-content-between w-100">
+                        <div>
+                            <p><strong>Account Number:</strong></p>
+                            <p th:text="${deposit.accountNumber}"></p>
+                        </div>
+                        <div>
+                            <p><strong>Deposit Term:</strong></p>
+                            <p th:text="${deposit.depositTerm}"></p>
+                        </div>
+                        <div>
+                            <p><strong>Maturity Date:</strong></p>
+                            <p th:text="${deposit.maturityDate}"></p>
+                        </div>
+                        <div>
+                            <p><strong>Amount:</strong></p>
+                            <p th:text="${deposit.amount} + ' ' + ${deposit.currency}"></p>
+                        </div>
+                        <div>
+                            <p><strong>Description:</strong></p>
+                            <p th:text="${deposit.description}"></p>
+                        </div>
+                    </div>
+
+                    <!-- Add <hr> between cards but not after the last one -->
+                    <hr th:if="${!iterStat.last}" style="border: 1px solid #000; margin: 15px 0; width: 100%;">
+
+                </div>
+            </div>
+    </body>
+</html>

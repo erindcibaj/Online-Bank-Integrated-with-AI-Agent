@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="nav-business :: layout(~{::body})">
+<head>
+    <title>Loan Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <h1>Loan List</h1>  
+
+    <button class="add" onclick="window.location.href='/new-loan-business';">
+        <i></i> New Loan
+    </button>
+
+    <!-- If there are loans, show the box -->
+    <div class="box">
+        <div th:each="loan, iterStat : ${loans}" style="width: 100%; padding: 10px 0;">
+            <h3 th:text="${loan.loanType}"></h3>
+
+            <div style="margin-top: 10px;" class="d-flex justify-content-between w-100">
+                <div>
+                    <p><strong>Account Number:</strong></p>
+                    <p th:text="${loan.accountNumber}"></p>
+                </div>
+                <div>
+                    <p><strong>Type:</strong></p>
+                    <p th:text="${loan.loanType}"></p>
+                </div>
+                <div>
+                    <p><strong>Amount:</strong></p>
+                    <p th:text="${loan.amount}"></p>
+                </div>
+                <div>
+                    <p><strong>Status:</strong></p>
+                    <p style="padding: 10px; font-size: 13px" th:text="${loan.status}" 
+                       th:classappend="${loan.status == 'Pending' ? 'badge bg-warning' : 
+                                        (loan.status == 'Accepted' ? 'badge bg-success' : 
+                                        'badge bg-danger')}">
+                    </p>
+                </div>
+            </div>
+
+            <!-- Add <hr> between cards but not after the last one -->
+            <hr th:if="${!iterStat.last}" style="border: 1px solid #000; margin: 15px 0; width: 100%;">
+        </div>
+    </div>
+
+</body>
+</html>
